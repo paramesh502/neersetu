@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+
+  * {
+    @apply border-slate-200;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl border border-slate-200 shadow-sm;
+  }
+
+  .card-header {
+    @apply px-6 py-4 border-b border-slate-100;
+  }
+
+  .card-body {
+    @apply px-6 py-4;
+  }
+
+  .btn-primary {
+    @apply bg-water-600 hover:bg-water-700 text-white font-semibold px-4 py-2 rounded-xl
+           transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-slate-50 text-slate-700 font-semibold px-4 py-2 rounded-xl
+           border border-slate-200 transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .stat-card {
+    @apply card p-6 flex flex-col gap-2;
+  }
+
+  .input {
+    @apply w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm
+           focus:outline-none focus:ring-2 focus:ring-water-400 focus:border-transparent
+           bg-white placeholder:text-slate-400;
+  }
+
+  .select {
+    @apply input appearance-none cursor-pointer;
+  }
+
+  /* Animated water flow bar */
+  .flow-bar {
+    @apply relative overflow-hidden rounded-full h-2 bg-water-100;
+  }
+
+  .flow-fill {
+    @apply absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-water-400 to-water-600 transition-all duration-700;
+  }
+
+  /* Agent step card */
+  .agent-step {
+    @apply relative pl-8 pb-6;
+  }
+
+  .agent-step::before {
+    @apply absolute left-3 top-6 bottom-0 w-px bg-slate-200 content-[''];
+  }
+
+  .agent-step:last-child::before {
+    @apply hidden;
+  }
+
+  .agent-dot {
+    @apply absolute left-0 top-1 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold;
+  }
+}
+
+/* Water ripple animation */
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.ripple {
+  animation: ripple 1.5s ease-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { @apply bg-slate-100; }
+::-webkit-scrollbar-thumb { @apply bg-slate-300 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-slate-400; }
