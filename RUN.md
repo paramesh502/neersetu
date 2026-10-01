@@ -31,11 +31,11 @@ source venv/bin/activate        # Mac / Linux
 
 # Install dependencies
 pip install fastapi==0.115.0 "uvicorn[standard]==0.30.6" sqlmodel==0.0.21 \
-  langgraph==0.2.28 langchain==0.3.1 langchain-openai==0.2.1 openai==1.51.0 \
+  langgraph==0.2.28 langchain==0.3.1 langchain-groq==0.2.1 \
   python-dotenv==1.0.1 httpx==0.27.2 aiofiles==24.1.0 python-multipart==0.0.12
 
-# (Optional) Add OpenAI key for LLM features
-echo "OPENAI_API_KEY=sk-your-key-here" > .env
+# Add Groq API key (free at https://console.groq.com)
+echo "GROQ_API_KEY=gsk_your-key-here" > .env
 
 # Start server — auto seeds the database on first run
 uvicorn main:app --reload --port 8000
@@ -73,3 +73,14 @@ npm run dev
 2. Select **F006 — Farukh Mirza**
 3. Paste: `My sugarcane is drying. I need 3 hours of water today urgently.`
 4. Click **Run Pipeline**
+
+---
+
+## Get a free Groq API key
+
+1. Go to https://console.groq.com
+2. Sign up (free, no credit card)
+3. Create API key → copy it
+4. Paste into `backend/.env` as `GROQ_API_KEY=gsk_...`
+
+The app works without a key too (uses rule-based fallback).

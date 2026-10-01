@@ -114,7 +114,7 @@ def run_negotiation_agent(state: NeerSetuState) -> NeerSetuState:
     state["compensation_hours"] = compensation
 
     # Try LLM proposal, fall back to template
-    use_llm = bool(os.getenv("OPENAI_API_KEY", "").startswith("sk-"))
+    use_llm = bool(os.getenv("GROQ_API_KEY", "").startswith("gsk_"))
     proposal = ""
     if use_llm:
         proposal = _llm_propose(state, yielding_data)

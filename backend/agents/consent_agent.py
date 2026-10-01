@@ -52,7 +52,7 @@ def run_consent_agent(state: NeerSetuState) -> NeerSetuState:
     reason = ""
 
     # Try LLM consent simulation
-    use_llm = bool(os.getenv("OPENAI_API_KEY", "").startswith("sk-"))
+    use_llm = bool(os.getenv("GROQ_API_KEY", "").startswith("gsk_"))
     if use_llm:
         decision, reason = _llm_consent(state)
 
